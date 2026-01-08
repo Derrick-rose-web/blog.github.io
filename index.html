@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的个人博客 - 首页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "微软雅黑", sans-serif;
+        }
+        /* 导航栏样式 */
+        .navbar {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: #3498db;
+        }
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* 个人信息区 */
+        .profile {
+            padding: 3rem 5%;
+            text-align: center;
+            background-color: #f8f9fa;
+        }
+        .profile img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+            border: 5px solid white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .profile h2 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .profile p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        .social-icons a {
+            color: #2c3e50;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        .social-icons a:hover {
+            color: #3498db;
+        }
+
+        /* 精选文章区 */
+        .articles {
+            padding: 3rem 5%;
+        }
+        .articles h3 {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .article-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .article-card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .article-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        .article-card .date {
+            color: #999;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .article-card p {
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        .article-card .read-more {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        .article-card .read-more:hover {
+            background-color: #2980b9;
+        }
+
+        /* 标签云 */
+        .tags {
+            padding: 3rem 5%;
+            background-color: #f8f9fa;
+            text-align: center;
+        }
+        .tags h3 {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+        }
+        .tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+        .tag-cloud span {
+            padding: 0.5rem 1rem;
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            color: #2c3e50;
+        }
+
+        /* 页脚 */
+        .footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 2rem 5%;
+            text-align: center;
+        }
+        .footer .social-icons {
+            margin: 1rem 0;
+        }
+
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: #2c3e50;
+                padding: 1rem;
+                gap: 1rem;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .hamburger {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="logo">张证军</div>
+        <div class="nav-links" id="navLinks">
+            <a href="index.html">首页</a>
+            <a href="articles.html">文章列表</a>
+            <a href="about.html">关于我</a>
+            <a href="portfolio.html">作品集</a>
+        </div>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+    </nav>
+
+    <!-- 个人信息区 -->
+    <section class="profile">
+        <img src="zhang.JPG" alt="个人头像">
+        <h2>德里克罗斯</h2>
+        <p>前端开发爱好者 | 记录技术与生活</p>
+        <div class="social-icons">
+            <a href="#">🔗 GitHub</a>
+            <a href="#">🔗 掘金</a>
+            <a href="#">🔗 知乎</a>
+        </div>
+    </section>
+
+    <!-- 精选文章区 -->
+    <section class="articles">
+        <h3>精选文章</h3>
+        <div class="article-card">
+            <div class="article-card">
+                <h4>职业生涯：</h4>
+                <div class="date">2026-01-01</div>
+                <p> 德里克·罗斯在2008年NBA选秀中于首轮第1顺位被芝加哥公牛队选中，新秀赛季当选NBA年度最佳新秀并夺得NBA全明星技巧挑战赛冠军。2009-10赛季入选NBA全明星替补阵容。2010年，罗斯随美国男篮夺得世锦赛冠军。2010-11赛季，22岁的罗斯荣膺NBA常规赛最有价值球员（MVP），成为NBA历史上最年轻的MVP，并在该赛季入选NBA最佳阵容一阵和NBA全明星赛首发阵容。2011年，NBA新劳资协议中增加“罗斯条款”，以使符合条件的优秀年轻球员能够更早地获得占据球队工资帽30%的顶薪合同。</p>
+                <a href="article1.html" class="read-more">阅读更多</a>
+            </div>
+            <div class="article-card">
+                <h4>控卫基本素养：</h4>
+                <div class="date">2025-12-28</div>
+                <p>作为一名组织后卫，要在球场上积极跟队友沟通，引导队友落位，在攻防两端去组织球队是你的职责，所以你要去学习球队的战术、掌握基本的攻防方法。 还要在不管队友状态好与不好的时候去激励他们，给他们信心。 </p>
+                <a href="article2.html" class="read-more">阅读更多</a>
+            </div>
+            <div class="article-card">
+                <h4>全明星阵容：</h4>
+                <div class="date">2025-12-20</div>
+                <p>等等等等等...... </p>
+                <a href="article3.html" class="read-more">阅读更多</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 标签云 -->
+    <section class="tags">
+        <h3>我的技能/兴趣</h3>
+        <div class="tag-cloud">
+            <span>HTML5</span>
+            <span>CSS3</span>
+            <span>JavaScript</span>
+            <span>React</span>
+            <span>前端工程化</span>
+            <span>响应式设计</span>
+            <span>web前端开发</span>
+            <span>摄影</span>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <p>© 2026 张证军个人博客 | 备案号;152838393163</p>
+        <div class="social-icons">
+            <a href="#">🔗 GitHub</a>
+            <a href="#">🔗 掘金</a>
+            <a href="#">🔗 知乎</a>
+        </div>
+    </footer>
+
+    <script>
+        // 移动端菜单切换
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
